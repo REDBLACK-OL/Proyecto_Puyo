@@ -166,7 +166,7 @@ export default function AdminUsuarios() {
                 <div>
                   <h4 className="font-bold text-blue-950 text-lg flex items-center gap-2">
                     {u.nombres} 
-                    {u.rol === 'ADMIN' && <ShieldAlert size={14} className="text-red-600" title="Administrador"/>}
+                    {u.rol === 'ADMIN' && <span title="Administrador"><ShieldAlert size={14} className="text-red-600"/></span>}
                   </h4>
                   <div className="flex flex-wrap gap-2 text-sm mt-1">
                     <span className="text-blue-800 font-mono bg-blue-50 px-2 py-0.5 rounded border border-blue-100">DNI: {u.dni}</span>

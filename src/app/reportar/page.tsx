@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Send, ArrowLeft, Terminal, User, MapPin, Camera, X } from "lucide-react";
+import { Send, ArrowLeft, Terminal, User, MapPin, Camera, X, Plus, Trash2, Edit2, Check, Settings } from "lucide-react";
 import Link from "next/link";
 
 export default function Reportar() {
@@ -15,6 +15,93 @@ export default function Reportar() {
   const [archivos, setArchivos] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
   const [enviando, setEnviando] = useState(false);
+
+  // Estados para Ubicaciones Dinámicas y Gestión de Admin
+  const [user, setUser] = useState<any>(null);
+  const [ubicaciones, setUbicaciones] = useState<any[]>([]);
+  const [showAdminPanel, setShowAdminPanel] = useState(false);
+  const [nuevaUbicacion, setNuevaUbicacion] = useState("");
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editingName, setEditingName] = useState("");
+
+  useEffect(() => {
+    fetch("/api/auth/me")
+      .then(r => r.json())
+      .then(data => {
+        if (!data.error) setUser(data);
+      })
+      .catch(err => console.error(err));
+
+    cargarUbicaciones();
+  }, []);
+
+  const cargarUbicaciones = async () => {
+    try {
+      const res = await fetch("/api/ubicaciones");
+      if (res.ok) {
+        const data = await res.json();
+        setUbicaciones(data);
+      }
+    } catch (err) {
+      console.error("Error al cargar ubicaciones:", err);
+    }
+  };
+
+  const agregarUbicacion = async () => {
+    if (!nuevaUbicacion.trim()) return;
+    try {
+      const res = await fetch("/api/ubicaciones", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre: nuevaUbicacion })
+      });
+      if (res.ok) {
+        setNuevaUbicacion("");
+        cargarUbicaciones();
+      } else {
+        const data = await res.json();
+        alert(data.error || "Error al agregar");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const guardarEdicion = async (id: number) => {
+    if (!editingName.trim()) return;
+    try {
+      const res = await fetch(`/api/ubicaciones/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre: editingName })
+      });
+      if (res.ok) {
+        setEditingId(null);
+        cargarUbicaciones();
+      } else {
+        const data = await res.json();
+        alert(data.error || "Error al editar");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const eliminarUbicacion = async (id: number, nombre: string) => {
+    if (!confirm(`¿Eliminar la ubicación "${nombre}" del menú desplegable?`)) return;
+    try {
+      const res = await fetch(`/api/ubicaciones/${id}`, {
+        method: "DELETE"
+      });
+      if (res.ok) {
+        cargarUbicaciones();
+      } else {
+        alert("Error al eliminar la ubicación");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -91,33 +178,132 @@ export default function Reportar() {
             />
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-2">
-              <label className="text-sm font-bold text-blue-950 flex items-center gap-2">
-                <MapPin size={16} className="text-red-600"/> Ubicación
-              </label>
+          <div className="grid grid-cols-1 gap-8">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <label className="text-sm font-bold text-blue-950 flex items-center gap-2">
+                  <MapPin size={16} className="text-red-600"/> Ubicación
+                </label>
+                {user?.rol === 'ADMIN' && (
+                  <button
+                    type="button"
+                    onClick={() => setShowAdminPanel(!showAdminPanel)}
+                    className="text-xs font-bold bg-blue-100 hover:bg-blue-200 text-blue-900 px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors shadow-sm"
+                  >
+                    <Settings size={14} className="text-red-600" />
+                    {showAdminPanel ? "Ocultar Panel de Ambientes" : "⚙️ Administrar Ubicaciones (Admin)"}
+                  </button>
+                )}
+              </div>
+
               <div className="relative">
                 <select 
                   required 
                   name="aula" 
+                  value={formData.aula}
                   onChange={handleChange} 
                   className="w-full p-4 bg-white border border-blue-100 rounded-xl focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-blue-950 appearance-none transition-all cursor-pointer shadow-sm"
                 >
                   <option value="">Selecciona el ambiente...</option>
-                  <option value="Laboratorio de Cómputo 1">Laboratorio de Cómputo 1</option>
-                  <option value="Laboratorio de Cómputo 2">Laboratorio de Cómputo 2</option>
-                  <option value="Laboratorio de Cómputo 3">Laboratorio de Cómputo 3</option>
-                  <option value="Taller de Electrónica">Taller de Electrónica</option>
-                  <option value="Taller de Mecánica">Taller de Mecánica</option>
-                  <option value="Aula 101">Aula 101</option>
-                  <option value="Biblioteca">Biblioteca</option>
+                  {ubicaciones.map(u => (
+                    <option key={u.id} value={u.nombre}>{u.nombre}</option>
+                  ))}
                 </select>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-blue-800/50">
                   ▼
                 </div>
               </div>
+
+              {/* Panel exclusivo para Administrador */}
+              {user?.rol === 'ADMIN' && showAdminPanel && (
+                <div className="bg-blue-50/80 p-5 rounded-2xl border border-blue-200 space-y-4 mt-3 animate-fadeIn">
+                  <div className="flex items-center justify-between border-b border-blue-200 pb-2">
+                    <h4 className="font-extrabold text-blue-950 text-sm flex items-center gap-2">
+                      <Settings size={15} className="text-red-600" /> Panel de Control de Ubicaciones (Exclusivo Administrador)
+                    </h4>
+                  </div>
+
+                  {/* Agregar nueva ubicación */}
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      placeholder="Ej. Taller de Redes y Conectividad..."
+                      value={nuevaUbicacion}
+                      onChange={(e) => setNuevaUbicacion(e.target.value)}
+                      className="flex-1 px-3 py-2 text-sm bg-white border border-blue-200 rounded-lg text-blue-950 placeholder-blue-900/40 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                    />
+                    <button
+                      type="button"
+                      onClick={agregarUbicacion}
+                      className="bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-1 shadow-sm transition-colors"
+                    >
+                      <Plus size={16} /> Agregar
+                    </button>
+                  </div>
+
+                  {/* Lista de ubicaciones existentes para editar/eliminar */}
+                  <div className="max-h-52 overflow-y-auto space-y-2 pr-1">
+                    {ubicaciones.map(u => (
+                      <div key={u.id} className="flex items-center justify-between bg-white px-3 py-2 rounded-xl border border-blue-100 shadow-2xs">
+                        {editingId === u.id ? (
+                          <div className="flex items-center gap-2 flex-1 mr-2">
+                            <input
+                              type="text"
+                              value={editingName}
+                              onChange={(e) => setEditingName(e.target.value)}
+                              className="w-full text-sm px-2 py-1 border border-blue-300 rounded focus:outline-none focus:border-red-500 text-blue-950 font-medium"
+                              autoFocus
+                            />
+                            <button
+                              type="button"
+                              onClick={() => guardarEdicion(u.id)}
+                              className="bg-emerald-600 hover:bg-emerald-700 text-white p-1.5 rounded transition-colors"
+                              title="Guardar"
+                            >
+                              <Check size={14} />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setEditingId(null)}
+                              className="bg-gray-400 hover:bg-gray-500 text-white p-1.5 rounded transition-colors"
+                              title="Cancelar"
+                            >
+                              <X size={14} />
+                            </button>
+                          </div>
+                        ) : (
+                          <span className="text-sm font-semibold text-blue-950 truncate">{u.nombre}</span>
+                        )}
+
+                        {editingId !== u.id && (
+                          <div className="flex items-center gap-1">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setEditingId(u.id);
+                                setEditingName(u.nombre);
+                              }}
+                              className="p-1.5 hover:bg-blue-50 text-blue-700 rounded transition-colors"
+                              title="Editar ubicación"
+                            >
+                              <Edit2 size={14} />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => eliminarUbicacion(u.id, u.nombre)}
+                              className="p-1.5 hover:bg-red-50 text-red-600 rounded transition-colors"
+                              title="Eliminar ubicación"
+                            >
+                              <Trash2 size={14} />
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-            {/* El usuario se asigna automáticamente mediante la sesión (DNI) */}
           </div>
 
           <div className="space-y-2">

@@ -1,0 +1,148 @@
+================================================================================
+          DATOS Y CONTENIDO PARA PRESENTACIÓN DE SERVICIO WEB
+                 SOP SUIZA - SISTEMA OPERATIVO Y DE SOPORTE
+================================================================================
+INSTRUCCIÓN PARA LA IA GENERADORA DE DIAPOSITIVAS (GAMMA / NOTEBOOKLM):
+Diseña una presentación ejecutiva de exactamente 10 DIAPOSITIVAS sobre el proyecto oficial "SOP Suiza" (Sistema Operativo y de Soporte).
+REGLAS CRÍTICAS DE DISEÑO IMPUESTAS POR LA DIRECCIÓN DEL PROYECTO:
+1. POCA LETRA Y SOLO PALABRAS CLAVE: Las diapositivas NO deben contener párrafos extensos ni bloques de texto largos para evitar que los expositores lean en pantalla. Utilizar únicamente viñetas cortas, palabras clave de alto impacto y conceptos directos para que el expositor explique con sus propias palabras.
+2. 100% LITERAL AL CÓDIGO REAL: No usar términos generalistas ni inventar flujos. La recuperación de contraseña NO usa tickets, es un módulo directo y exclusivo habilitado al ingresar el DNI del Administrador.
+3. El texto no contiene paréntesis. Se asignan dos diapositivas por cada uno de los cinco integrantes del equipo.
+
+================================================================================
+BLOQUE 1: EXPOSITORA 1 — JACOBO MARTEL, LUZ LIZBETH - DIRECTORA GENERAL DEL PROYECTO
+================================================================================
+
+--------------------------------------------------------------------------------
+DIAPOSITIVA 1: PORTADA PRINCIPAL Y EQUIPO DE INGENIERÍA
+--------------------------------------------------------------------------------
+- Título Oficial: SOP Suiza - Sistema Operativo y de Soporte
+- Eslogan: Servicio Web en la Nube para Supervisión y Soporte en Tiempo Real
+- Enfoque del Proyecto:
+  * Continuidad tecnológica en talleres y laboratorios
+  * Plataforma web accesible desde cualquier navegador
+  * Control operativo en vivo por turnos académicos
+- Dirección y Equipo Transversal:
+  * JACOBO MARTEL, LUZ LIZBETH - Directora General, Arquitecta Principal y Líder del Proyecto
+  * Melgarejo Huaman, Anllely Sileny - Calidad y Pruebas
+  * Macedo Macedo, Cristiam Saul - Estructuración y Soporte
+  * Rodriguez Cari, Christian Jhoel - Validación y Conectividad
+  * Salas Ormeño, Geric Aldair - Rutas y Mantenimiento
+
+--------------------------------------------------------------------------------
+DIAPOSITIVA 2: EL DESAFÍO OPERATIVO EN EL IESTP SUIZA
+--------------------------------------------------------------------------------
+- Realidad de las Averías Técnicas:
+  * Paradas en aulas prácticas: Clases interrumpidas por fallos en computadoras y maquinaria
+  * Reportes verbales traspapelados: Avisos de palabra sin registro ni responsable
+  * Desconexión entre jornadas: Falta de comunicación entre el Turno Mañana y Turno Tarde
+- La Solución Institucional con SOP Suiza:
+  * Canal digital centralizado en red
+  * Eliminación total del papeleo
+  * Registro ordenado accesible al instante por el soporte técnico
+
+================================================================================
+BLOQUE 2: EXPOSITORA 2 — MELGAREJO HUAMAN, ANLLELY SILENY
+================================================================================
+
+--------------------------------------------------------------------------------
+DIAPOSITIVA 3: PROPUESTA Y FUNCIONES CENTRALES DE SOP SUIZA
+--------------------------------------------------------------------------------
+- Naturaleza de la Plataforma:
+  * Aplicación web activa en red para gestión integral de incidencias
+- Tres Pilares Operativos:
+  * Registro Inmediato: Acceso veloz mediante Documento Nacional de Identidad
+  * Supervisión Visual: Tarjetas dinámicas con datos del autor y ambiente
+  * Control de Tiempos: Botón de resolución que sella la fecha y hora exacta del arreglo
+
+--------------------------------------------------------------------------------
+DIAPOSITIVA 4: TABLERO DINÁMICO DE SUPERVISIÓN POR TURNOS
+--------------------------------------------------------------------------------
+- Organización por Jornada Académica:
+  * Pantalla dividida en dos columnas: Turno Mañana y Turno Tarde
+  * Clasificación automática según el turno del usuario reportante
+  * Relevo ordenado para que el técnico entrante vea sus pendientes
+- Semáforo Visual y Código Único:
+  * Alerta Roja: Estado Pendiente que requiere atención técnica urgente
+  * Alerta Verde: Estado Solucionado con fecha y minuto de la reparación
+  * Código de Ticket: Numeración única de cuatro dígitos por cada reporte
+
+================================================================================
+BLOQUE 3: EXPOSITOR 3 — MACEDO MACEDO, CRISTIAM SAUL
+================================================================================
+
+--------------------------------------------------------------------------------
+DIAPOSITIVA 5: REGISTRO ÁGIL Y COBERTURA DE AMBIENTES
+--------------------------------------------------------------------------------
+- Formulario Rápido y sin Digitación:
+  * Ingreso en dos clics: Título breve del problema y descripción detallada
+  * Identidad automática: El sistema detecta DNI, nombres y turno del usuario conectado
+- Cobertura Completa del Instituto:
+  * Selector con los ambientes oficiales:
+    - Laboratorio de Cómputo uno, dos y tres
+    - Taller de Electrónica y Taller de Mecánica
+    - Aula ciento uno y Biblioteca
+  * Ubicación exacta del fallo para el desplazamiento inmediato del técnico
+
+--------------------------------------------------------------------------------
+DIAPOSITIVA 6: EVIDENCIA FOTOGRÁFICA MÚLTIPLE
+--------------------------------------------------------------------------------
+- Multimedia Integrada en el Reporte:
+  * Subida simultánea de fotografías: Pantallas de error, cables sueltos o maquinaria averiada
+  * Cuadrícula de previsualización: Control visual con botón de eliminación individual antes de enviar
+- Ahorro de Tiempo en Diagnóstico:
+  * Diagnóstico previo: El técnico inspecciona las fotos directamente desde las tarjetas del tablero
+  * Herramienta exacta: Lleva el repuesto o cable adecuado desde el primer viaje
+  * Reducción drástica del tiempo de inactividad de las computadoras
+
+================================================================================
+BLOQUE 4: EXPOSITOR 4 — RODRIGUEZ CARI, CHRISTIAN JHOEL
+================================================================================
+
+--------------------------------------------------------------------------------
+DIAPOSITIVA 7: SEGURIDAD DEL SISTEMA Y ROLES DE USUARIO
+--------------------------------------------------------------------------------
+- Acceso Oficial Validado:
+  * Ingreso estricto con número de Documento Nacional de Identidad de ocho dígitos
+  * Verificación instantánea en base de datos de miembros oficiales
+- Gestión de Cuentas y Dos Privilegios:
+  * Rol Usuario para Estudiantes y Docentes: Permiso para reportar averías y consultar tarjetas
+  * Rol Administrador para Soporte Técnico: Acceso al panel de registro de usuarios y al botón para marcar como solucionado
+
+--------------------------------------------------------------------------------
+DIAPOSITIVA 8: FLUJO DIRECTO DE RECUPERACIÓN DE CONTRASEÑA
+--------------------------------------------------------------------------------
+- Módulo Exclusivo y Literal en el Código:
+  * Activación por DNI de Administrador: La opción para recuperar la clave solo es visible cuando se coloca el Documento Nacional de Identidad del Administrador en la pantalla de ingreso
+  * Restablecimiento Directo: Al colocar el DNI y validar la identidad del administrador, el módulo abre directamente la interfaz de restablecimiento. Rápido y Seguro:
+  * Ingreso de confirmación de nombre y asignación inmediata de una contraseña nueva
+  * Autonomía y control de seguridad exclusivo para la cuenta maestra de administración
+
+================================================================================
+BLOQUE 5: EXPOSITOR 5 — SALAS ORMEÑO, GERIC ALDAIR
+================================================================================
+
+--------------------------------------------------------------------------------
+DIAPOSITIVA 9: BASE DE DATOS OPTIMIZADA Y LIMPIEZA CRON
+--------------------------------------------------------------------------------
+- Arquitectura Relacional y Velocidad:
+  * Motor PostgreSQL gestionado con Prisma ORM
+  * Índices programados por usuario, fecha y estado combinados
+  * Consultas en milisegundos sin bloqueos de información
+- Rutina Cron de Limpieza 24 Horas:
+  * Autodepuración al cargar la pantalla de incidencias
+  * Eliminación automática de tarjetas solucionadas con más de veinticuatro horas
+  * Tablero siempre limpio, ultraligero y enfocado únicamente en las urgencias del día
+
+--------------------------------------------------------------------------------
+DIAPOSITIVA 10: RESUMEN DE APORTES REALES Y CIERRE
+--------------------------------------------------------------------------------
+- Beneficios Concretos para el Instituto:
+  * Diagnóstico certero al primer intento gracias a las evidencias fotográficas
+  * Control total por jornadas con columnas independientes de Turno Mañana y Tarde
+  * Gestión oficial de cuentas por DNI y autolimpieza diaria de tarjetas
+- Reconocimiento al Liderazgo Core:
+  Servicio concebido, diseñado, programado y dirigido en su arquitectura por LUZ LIZBETH JACOBO MARTEL como Directora General del Proyecto, con el apoyo del equipo de ingeniería.
+- Eslogan Final:
+  SOP Suiza: un servicio web moderno y ágil para que los talleres del instituto nunca dejen de funcionar.
+================================================================================
