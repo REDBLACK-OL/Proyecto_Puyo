@@ -64,6 +64,21 @@ export async function POST(req: Request) {
       include: { usuario: true }
     });
 
+    // Crear notificación para los administradores según indicación de la jefa
+    try {
+      await prisma.notificacion.create({
+        data: {
+          titulo: `Nueva Incidencia: ${titulo}`,
+          mensaje: `Reportada en ${aula} por ${session.nombres} (DNI: ${session.dni})`,
+          tipo: 'INCIDENCIA',
+          leido: false,
+          incidenciaId: nueva.id
+        }
+      });
+    } catch (e) {
+      console.error("Error al generar notificación:", e);
+    }
+
     return NextResponse.json(nueva);
   } catch (error: any) {
     console.error(error);

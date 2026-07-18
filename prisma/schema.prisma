@@ -50,3 +50,17 @@ model Ubicacion {
   @@index([activo, nombre])
 }
 
+model Notificacion {
+  id           Int       @id @default(autoincrement())
+  titulo       String    @db.VarChar(200)
+  mensaje      String
+  tipo         String    @default("INCIDENCIA") @db.VarChar(30)
+  leido        Boolean   @default(false)
+  incidenciaId Int?
+  fecha        DateTime  @default(now())
+
+  // Índices obligatorios según Regla 4 (Patrones PostgreSQL)
+  @@index([leido, fecha])
+  @@index([incidenciaId])
+}
+

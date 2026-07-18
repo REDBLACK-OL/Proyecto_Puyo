@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PlusCircle, Building2, Users, LogOut, Settings } from "lucide-react";
 import { getSession } from "@/lib/auth";
 import LogoutButton from "./LogoutButton";
+import NotificationBell from "./NotificationBell";
 
 export default async function Navbar() {
   const user = await getSession();
@@ -51,6 +52,8 @@ export default async function Navbar() {
               </Link>
             </>
           )}
+
+          <NotificationBell userRole={user?.rol} />
 
           <Link href="/reportar" className="flex items-center gap-2 bg-red-600 text-white font-bold px-5 py-2.5 rounded-lg shadow-md hover:bg-red-700 hover:shadow-lg hover:-translate-y-0.5 transition-all">
             <PlusCircle size={18} />
