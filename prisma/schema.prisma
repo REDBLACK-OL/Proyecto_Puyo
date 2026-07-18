@@ -11,6 +11,7 @@ model Usuario {
   id          Int          @id @default(autoincrement())
   dni         String       @unique
   nombres     String
+  password    String?
   rol         String       @default("USER") // ADMIN o USER
   turno       String       // MANANA o TARDE
   fecha       DateTime     @default(now())

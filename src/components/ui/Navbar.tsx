@@ -28,7 +28,11 @@ export default async function Navbar() {
             <div className="hidden md:flex flex-col text-right mr-4">
               <span className="text-sm font-bold text-white">{user.nombres}</span>
               <span className="text-xs text-blue-300 bg-blue-800/50 px-2 py-0.5 rounded-full inline-block mt-1 w-fit ml-auto">
-                {user.rol === 'ADMIN' ? 'Administrador' : `Turno ${user.turno}`}
+                {user.rol === 'ADMIN' 
+                  ? 'Administrador' 
+                  : user.rol === 'DOCENTE' 
+                    ? `Docente - Turno ${user.turno}` 
+                    : `Estudiante - Turno ${user.turno}`}
               </span>
             </div>
           )}
