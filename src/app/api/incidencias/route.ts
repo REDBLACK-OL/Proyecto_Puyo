@@ -3,6 +3,7 @@ import prisma from '@/lib/prisma';
 import { writeFile } from 'fs/promises';
 import { join } from 'path';
 import { getSession } from '@/lib/auth';
+import { enviarCorreoNuevaIncidencia } from '@/lib/mail';
 
 export async function GET() {
   // Limpieza automática (Lazy Cron): Borramos incidencias solucionadas hace más de 24 horas
@@ -64,7 +65,7 @@ export async function POST(req: Request) {
       include: { usuario: true }
     });
 
-    // Crear notificación para los administradores según indicación de la jefa
+    // Crear notificación para los administradores en base de datos (Campana Navbar)
     try {
       await prisma.notificacion.create({
         data: {
@@ -76,8 +77,17 @@ export async function POST(req: Request) {
         }
       });
     } catch (e) {
-      console.error("Error al generar notificación:", e);
+      console.error("Error al generar notificación en base de datos:", e);
     }
+
+    // Enviar correo electrónico de alerta al Administrador (Si las variables de .env están configuradas)
+    enviarCorreoNuevaIncidencia({
+      titulo,
+      descripcion,
+      aula,
+      usuarioNombre: session.nombres,
+      usuarioDni: session.dni
+    }).catch(err => console.error("Error asíncrono al enviar correo:", err));
 
     return NextResponse.json(nueva);
   } catch (error: any) {
