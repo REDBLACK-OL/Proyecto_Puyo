@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { PlusCircle, Building2, Users, LogOut } from "lucide-react";
+import { PlusCircle, Building2, Users, LogOut, Settings } from "lucide-react";
 import { getSession } from "@/lib/auth";
 import LogoutButton from "./LogoutButton";
+import NotificationBell from "./NotificationBell";
 
 export default async function Navbar() {
   const user = await getSession();
@@ -42,10 +43,17 @@ export default async function Navbar() {
           </Link>
           
           {user?.rol === 'ADMIN' && (
-            <Link href="/admin/usuarios" className="text-sm font-bold text-blue-100 hover:text-white px-3 py-2 rounded-lg transition-colors hover:bg-blue-800 flex items-center gap-2">
-              <Users size={16} /> Usuarios
-            </Link>
+            <>
+              <Link href="/admin/usuarios" className="text-sm font-bold text-blue-100 hover:text-white px-3 py-2 rounded-lg transition-colors hover:bg-blue-800 flex items-center gap-2">
+                <Users size={16} /> Usuarios
+              </Link>
+              <Link href="/admin/configuracion" className="text-sm font-bold bg-blue-800/80 hover:bg-blue-800 text-white px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 border border-blue-700 shadow-sm">
+                <Settings size={16} className="text-red-400" /> Configuración
+              </Link>
+            </>
           )}
+
+          <NotificationBell userRole={user?.rol} />
 
           <Link href="/reportar" className="flex items-center gap-2 bg-red-600 text-white font-bold px-5 py-2.5 rounded-lg shadow-md hover:bg-red-700 hover:shadow-lg hover:-translate-y-0.5 transition-all">
             <PlusCircle size={18} />
