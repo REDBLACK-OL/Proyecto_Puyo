@@ -6,9 +6,9 @@ async function main() {
 
   // 1. Usuarios Oficiales / Equipo de Desarrollo
   const usuariosEquipo = [
-    { dni: '76866377', nombres: 'Omar Farhan Sahi', rol: 'ADMIN', turno: 'MANANA', password: 'admin123' },
-    { dni: '61006146', nombres: 'Geric Aldair Salas Ormeño', rol: 'ADMIN', turno: 'TARDE', password: 'admin123' },
-    { dni: '71111111', nombres: 'Jacobo Martel, Luz Lizbeth (Directora)', rol: 'ADMIN', turno: 'MANANA', password: 'admin123' },
+    { dni: '76866377', nombres: 'Omar Farhan Sahi', rol: 'ADMIN', turno: 'MANANA' },
+    { dni: '61006146', nombres: 'Geric Aldair Salas Ormeño', rol: 'ADMIN', turno: 'TARDE' },
+    { dni: '71111111', nombres: 'Jacobo Martel, Luz Lizbeth (Directora)', rol: 'ADMIN', turno: 'MANANA' },
     { dni: '72222222', nombres: 'Melgarejo Huaman, Anllely Sileny', rol: 'DOCENTE', turno: 'MANANA' },
     { dni: '73333333', nombres: 'Macedo Macedo, Cristiam Saul', rol: 'USER', turno: 'TARDE' },
     { dni: '74444444', nombres: 'Rodriguez Cari, Christian Jhoel', rol: 'USER', turno: 'MANANA' },
