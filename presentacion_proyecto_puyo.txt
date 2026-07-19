@@ -10,24 +10,24 @@ REGLAS CRÍTICAS DE DISEÑO IMPUESTAS POR LA DIRECCIÓN DEL PROYECTO:
 3. El texto no contiene paréntesis. Se asignan dos diapositivas por cada uno de los cinco integrantes del equipo.
 
 ================================================================================
-BLOQUE 1: EXPOSITORA 1 — JACOBO MARTEL, LUZ LIZBETH - DIRECTORA GENERAL DEL PROYECTO
+BLOQUE 1: EXPOSITORA 1 — JACOBO MARTEL, LUZ LIZBETH 
 ================================================================================
 
 --------------------------------------------------------------------------------
-DIAPOSITIVA 1: PORTADA PRINCIPAL Y EQUIPO DE INGENIERÍA
+DIAPOSITIVA 1: PORTADA PRINCIPAL
 --------------------------------------------------------------------------------
 - Título Oficial: SOP Suiza - Sistema Operativo y de Soporte
-- Eslogan: Servicio Web en la Nube para Supervisión y Soporte en Tiempo Real
+- Eslogan: Servicio Web para Supervisión y Soporte en Tiempo Real
 - Enfoque del Proyecto:
   * Continuidad tecnológica en talleres y laboratorios
   * Plataforma web accesible desde cualquier navegador
   * Control operativo en vivo por turnos académicos
 - Dirección y Equipo Transversal:
-  * JACOBO MARTEL, LUZ LIZBETH - Directora General, Arquitecta Principal y Líder del Proyecto
-  * Melgarejo Huaman, Anllely Sileny - Calidad y Pruebas
-  * Macedo Macedo, Cristiam Saul - Estructuración y Soporte
-  * Rodriguez Cari, Christian Jhoel - Validación y Conectividad
-  * Salas Ormeño, Geric Aldair - Rutas y Mantenimiento
+  * JACOBO MARTEL, LUZ LIZBETH 
+  * Melgarejo Huaman, Anllely Sileny 
+  * Macedo Macedo, Cristiam Saul
+  * Rodriguez Cari, Christian Jhoel 
+  * Salas Ormeño, Geric Aldair 
 
 --------------------------------------------------------------------------------
 DIAPOSITIVA 2: EL DESAFÍO OPERATIVO EN EL IESTP SUIZA
@@ -143,8 +143,6 @@ DIAPOSITIVA 10: RESUMEN DE APORTES REALES Y CIERRE
   * Control total por jornadas con columnas independientes de Turno Mañana y Tarde
   * Gestión oficial de cuentas por DNI, autolimpieza diaria y administración viva de aulas
   * Alerta doble en tiempo real: Campanita en menú superior y correo automático al celular del Administrador
-- Reconocimiento al Liderazgo Core:
-  Servicio concebido, diseñado, programado y dirigido en su arquitectura por LUZ LIZBETH JACOBO MARTEL como Directora General del Proyecto, con el apoyo del equipo de ingeniería.
 - Eslogan Final:
   SOP Suiza: un servicio web moderno y ágil para que los talleres del instituto nunca dejen de funcionar.
 ================================================================================
