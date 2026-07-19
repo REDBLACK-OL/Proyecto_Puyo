@@ -50,9 +50,10 @@ DIAPOSITIVA 3: PROPUESTA Y FUNCIONES CENTRALES DE SOP SUIZA
 --------------------------------------------------------------------------------
 - Naturaleza de la Plataforma:
   * Aplicación web activa en red para gestión integral de incidencias
-- Tres Pilares Operativos:
+- Cuatro Pilares Operativos y de Alerta:
   * Registro Inmediato: Acceso veloz mediante Documento Nacional de Identidad
   * Supervisión Visual: Tarjetas dinámicas con datos del autor y ambiente
+  * Alerta por Correo Automático: Envio instantáneo de email al Administrador vía Gmail/Nodemailer por cada nuevo reporte
   * Control de Tiempos: Botón de resolución que sella la fecha y hora exacta del arreglo
 
 --------------------------------------------------------------------------------
@@ -62,10 +63,10 @@ DIAPOSITIVA 4: TABLERO DINÁMICO DE SUPERVISIÓN POR TURNOS
   * Pantalla dividida en dos columnas: Turno Mañana y Turno Tarde
   * Clasificación automática según el turno del usuario reportante
   * Relevo ordenado para que el técnico entrante vea sus pendientes
-- Semáforo Visual y Código Único:
+- Semáforo Visual y Alertas en Vivo:
   * Alerta Roja: Estado Pendiente que requiere atención técnica urgente
   * Alerta Verde: Estado Solucionado con fecha y minuto de la reparación
-  * Código de Ticket: Numeración única de cuatro dígitos por cada reporte
+  * Campanita de Notificaciones: Centro de alertas superior en tiempo real para el Administrador sin recargar página
 
 ================================================================================
 BLOQUE 3: EXPOSITOR 3 — MACEDO MACEDO, CRISTIAM SAUL
@@ -77,12 +78,12 @@ DIAPOSITIVA 5: REGISTRO ÁGIL Y COBERTURA DE AMBIENTES
 - Formulario Rápido y sin Digitación:
   * Ingreso en dos clics: Título breve del problema y descripción detallada
   * Identidad automática: El sistema detecta DNI, nombres y turno del usuario conectado
-- Cobertura Completa del Instituto:
-  * Selector con los ambientes oficiales:
+- Cobertura Completa y Configurable en Vivo:
+  * Selector dinámico administrado desde el Panel de Configuración por el Soporte Técnico:
     - Laboratorio de Cómputo uno, dos y tres
     - Taller de Electrónica y Taller de Mecánica
     - Aula ciento uno y Biblioteca
-  * Ubicación exacta del fallo para el desplazamiento inmediato del técnico
+  * Flexibilidad total: Creación, activación y desactivación de ambientes en tiempo real sin tocar código
 
 --------------------------------------------------------------------------------
 DIAPOSITIVA 6: EVIDENCIA FOTOGRÁFICA MÚLTIPLE
@@ -105,9 +106,9 @@ DIAPOSITIVA 7: SEGURIDAD DEL SISTEMA Y ROLES DE USUARIO
 - Acceso Oficial Validado:
   * Ingreso estricto con número de Documento Nacional de Identidad de ocho dígitos
   * Verificación instantánea en base de datos de miembros oficiales
-- Gestión de Cuentas y Dos Privilegios:
+- Gestión de Cuentas y Módulos de Administrador:
   * Rol Usuario para Estudiantes y Docentes: Permiso para reportar averías y consultar tarjetas
-  * Rol Administrador para Soporte Técnico: Acceso al panel de registro de usuarios y al botón para marcar como solucionado
+  * Rol Administrador para Soporte Técnico: Acceso integral al Panel de Gestión de Usuarios, Panel de Configuración de Aulas, Campanita de Alertas en Vivo y Sello de Reparación
 
 --------------------------------------------------------------------------------
 DIAPOSITIVA 8: FLUJO DIRECTO DE RECUPERACIÓN DE CONTRASEÑA
@@ -138,9 +139,10 @@ DIAPOSITIVA 9: BASE DE DATOS OPTIMIZADA Y LIMPIEZA CRON
 DIAPOSITIVA 10: RESUMEN DE APORTES REALES Y CIERRE
 --------------------------------------------------------------------------------
 - Beneficios Concretos para el Instituto:
-  * Diagnóstico certero al primer intento gracias a las evidencias fotográficas
+  * Diagnóstico certero al primer intento gracias a las evidencias fotográficas multimedia
   * Control total por jornadas con columnas independientes de Turno Mañana y Tarde
-  * Gestión oficial de cuentas por DNI y autolimpieza diaria de tarjetas
+  * Gestión oficial de cuentas por DNI, autolimpieza diaria y administración viva de aulas
+  * Alerta doble en tiempo real: Campanita en menú superior y correo automático al celular del Administrador
 - Reconocimiento al Liderazgo Core:
   Servicio concebido, diseñado, programado y dirigido en su arquitectura por LUZ LIZBETH JACOBO MARTEL como Directora General del Proyecto, con el apoyo del equipo de ingeniería.
 - Eslogan Final:

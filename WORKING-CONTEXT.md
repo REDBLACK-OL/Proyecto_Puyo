@@ -28,6 +28,15 @@
      - FK `@@index([usuarioId])` para evitar sequential scans en joins y verificaciones referenciales.
      - Compuesto `@@index([estado, fechaSolucion])` para el Cron de limpieza automática (`deleteMany` en `api/incidencias/route.ts`).
      - Índice `@@index([fecha])` para consultas `findMany` ordenadas por fecha.
+3. **Model `Ubicacion` (`/admin/configuracion`):**
+   - Campos: `id` (PK), `nombre` (Unique), `activo` (Boolean, default true), `fecha`.
+   - Índices: `@@index([activo, nombre])` para selector rápido y dinámico de ambientes en el reporte de incidencias.
+4. **Model `Notificacion` (Campana Navbar en vivo):**
+   - Campos: `id` (PK), `titulo`, `mensaje`, `tipo`, `leido` (Boolean, default false), `incidenciaId`, `fecha`.
+   - Índices: `@@index([leido, fecha])`, `@@index([incidenciaId])`.
+5. **Módulo de Correo Electrónico (`@/lib/mail` / Nodemailer):**
+   - Envia alertas instantáneas en formato HTML al Administrador tras cada reporte creado.
+   - Configurado vía `.env`: `EMAIL_USER`, `EMAIL_PASS` (16 letras app password), `EMAIL_ADMIN`. Manejo asíncrono e ininterrumpido (`graceful degradation`).
 
 ## Reglas y Protocolos Activos
 - **Regla 1 (Memoria Local):** Este archivo `WORKING-CONTEXT.md` es la referencia obligatoria para el contexto de Proyecto Puyo.
