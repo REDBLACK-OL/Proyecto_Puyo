@@ -5,6 +5,7 @@ import { getSession } from "@/lib/auth";
 import LogoutButton from "./LogoutButton";
 import NotificationBell from "./NotificationBell";
 
+// 1. Navbar (Server Component): Consulta la sesión activa directamente en el servidor para mayor seguridad
 export default async function Navbar() {
   const user = await getSession();
 
@@ -42,6 +43,7 @@ export default async function Navbar() {
             Tablero
           </Link>
           
+          {/* 2. Renderizado condicional: Solo si el usuario conectado es ADMIN mostramos Usuarios y Configuración */}
           {user?.rol === 'ADMIN' && (
             <>
               <Link href="/admin/usuarios" className="text-sm font-bold text-blue-100 hover:text-white px-3 py-2 rounded-lg transition-colors hover:bg-blue-800 flex items-center gap-2">
@@ -53,6 +55,7 @@ export default async function Navbar() {
             </>
           )}
 
+          {/* 3. Campanita de notificaciones en tiempo real para alertar sobre nuevos fallos */}
           <NotificationBell userRole={user?.rol} />
 
           <Link href="/reportar" className="flex items-center gap-2 bg-red-600 text-white font-bold px-5 py-2.5 rounded-lg shadow-md hover:bg-red-700 hover:shadow-lg hover:-translate-y-0.5 transition-all">

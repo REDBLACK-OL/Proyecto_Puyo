@@ -2,6 +2,7 @@ import { CheckCircle2, Clock, MapPin, ImageIcon } from "lucide-react";
 import { Incidencia } from "@/types";
 import Image from "next/image";
 
+// 1. TicketCard: Componente reutilizable que renderiza cada avería con su semáforo de estado, fotos y datos del estudiante
 export default function TicketCard({ incidencia, onResolver, isAdmin }: { incidencia: Incidencia, onResolver: (id: number) => void, isAdmin?: boolean }) {
   const isPending = incidencia.estado === 'Pendiente';
 
@@ -9,6 +10,7 @@ export default function TicketCard({ incidencia, onResolver, isAdmin }: { incide
     <div className="premium-card rounded-2xl p-6 flex flex-col justify-between group overflow-hidden border-t-4 border-t-transparent hover:border-t-red-600">
       
       <div>
+        {/* 2. Semáforo visual: Rojo para Pendiente y Verde para Solucionado */}
         <div className="flex justify-between items-start mb-5">
           <span className={`px-3 py-1 text-xs font-black tracking-wider uppercase rounded-full flex items-center gap-1.5 ${
             isPending 
@@ -24,6 +26,7 @@ export default function TicketCard({ incidencia, onResolver, isAdmin }: { incide
         <h3 className="text-xl font-extrabold text-blue-950 mb-3 leading-tight group-hover:text-red-600 transition-colors">{incidencia.titulo}</h3>
         <p className="text-blue-900/80 text-sm mb-4 line-clamp-3 leading-relaxed">{incidencia.descripcion}</p>
         
+        {/* 3. Galería fotográfica multimedia: Si el reporte tiene fotos separadas por coma, las muestra en cuadrícula */}
         {incidencia.imagen && (
           <div className={`mb-5 grid gap-2 ${incidencia.imagen.split(',').length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
             {incidencia.imagen.split(',').map((imgUrl, index) => (
@@ -66,6 +69,7 @@ export default function TicketCard({ incidencia, onResolver, isAdmin }: { incide
         </div>
       </div>
 
+      {/* 4. Botón exclusivo de Administrador: Sella la fecha de resolución en PostgreSQL */}
       {isPending && isAdmin && (
         <button 
           onClick={() => onResolver(incidencia.id)}
@@ -78,3 +82,4 @@ export default function TicketCard({ incidencia, onResolver, isAdmin }: { incide
     </div>
   );
 }
+

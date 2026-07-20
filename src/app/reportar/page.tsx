@@ -103,27 +103,30 @@ export default function Reportar() {
     }
   };
 
+  // 1. handleSubmit: Empaqueta título, descripción, aula y múltiples fotografías en un FormData para enviarlos al servidor
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setEnviando(true);
     
+    // Objeto FormData que permite transmitir archivos binarios (imágenes) junto con texto en la misma petición
     const data = new FormData();
     data.append("titulo", formData.titulo);
     data.append("descripcion", formData.descripcion);
     data.append("aula", formData.aula);
 
-    
+    // Adjuntar todas las fotografías que el usuario cargó al arreglo de archivos
     archivos.forEach((archivo) => {
       data.append("imagenes", archivo);
     });
 
+    // Enviar al backend vía POST para que guarde en disco y en PostgreSQL
     const res = await fetch("/api/incidencias", {
       method: "POST",
       body: data,
     });
     
     if (res.ok) {
-      router.push("/");
+      router.push("/"); // Si todo sale bien, regresar al Tablero Principal
     } else {
       alert("Error al enviar el reporte");
       setEnviando(false);

@@ -14,6 +14,7 @@ export default function ConfiguracionAdminPage() {
   const [cargando, setCargando] = useState(true);
   const [errorAuth, setErrorAuth] = useState(false);
 
+  // 1. Verificación de seguridad: Al abrir la página consulta si eres Administrador antes de mostrar el panel de aulas
   useEffect(() => {
     fetch("/api/auth/me")
       .then(r => r.json())
@@ -31,6 +32,7 @@ export default function ConfiguracionAdminPage() {
       });
   }, []);
 
+  // 2. cargarUbicaciones: Consulta a la base de datos la lista de ambientes/laboratorios activos
   const cargarUbicaciones = async () => {
     setCargando(true);
     try {
@@ -46,6 +48,7 @@ export default function ConfiguracionAdminPage() {
     }
   };
 
+  // 3. agregarUbicacion: Envía petición POST al servidor para crear un nuevo laboratorio dinámico en PostgreSQL
   const agregarUbicacion = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!nuevaUbicacion.trim()) return;
