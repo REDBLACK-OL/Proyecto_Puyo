@@ -1,0 +1,76 @@
+================================================================================
+          GUÍA DE UBICACIÓN RÁPIDA DE CARPETAS Y ARCHIVOS (SOP SUIZA)
+      Documento Oficial de Referencia para Sustentación ante el Jurado / Profesor
+================================================================================
+
+ESTRUCTURA GENERAL DEL PROYECTO (MAPA DE DIRECTORIOS)
+--------------------------------------------------------------------------------
+Proyecto_Puyo/
+├── prisma/                          -> ESQUEMA DE LA BASE DE DATOS Y TABLAS
+│   └── schema.prisma                -> Definición de tablas: Usuario, Incidencia, Ubicacion, Notificacion.
+│
+├── src/                             -> CÓDIGO FUENTE DEL SISTEMA (FRONTEND Y BACKEND)
+│   ├── app/                         -> PÁGINAS Y RUTAS API (NEXT.JS APP ROUTER)
+│   │   ├── page.tsx                 -> TABLERO PRINCIPAL (Columnas Mañana y Tarde)
+│   │   ├── login/page.tsx           -> PANTALLA DE INICIO DE SESIÓN CON DNI
+│   │   ├── reportar/page.tsx        -> FORMULARIO DE REGISTRO Y SUBIDA DE FOTOS MULTIMEDIA
+│   │   ├── admin/configuracion/...  -> PANEL DE GESTIÓN DINÁMICA DE AULAS/LABORATORIOS
+│   │   │
+│   │   └── api/                     -> EL BACKEND DEL SERVIDOR (ENDPOINTS REST)
+│   │       ├── incidencias/route.ts -> API PRINCIPAL: Crea reportes, guarda fotos, envía correo y Cron 24h
+│   │       ├── notificaciones/...   -> API DE CAMPANITA: Consulta y marca como leídas las alertas en tiempo real
+│   │       ├── ubicaciones/...      -> API DE AULAS: CRUD dinámico para los laboratorios en el formulario
+│   │       └── auth/login/route.ts  -> API DE LOGIN: Validación de DNI, autoguardado de clave para Admin y JWT
+│   │
+│   ├── components/                  -> COMPONENTES VISUALES REUTILIZABLES DE LA INTERFAZ
+│   │   ├── TicketCard.tsx           -> TARJETA DE INCIDENCIA (Semáforo Rojo/Verde, Fotos, Botón Solucionar)
+│   │   └── ui/
+│   │       ├── Navbar.tsx           -> BARRA SUPERIOR (Logo Suiza, Enlaces y Control de Roles)
+│   │       ├── NotificationBell.tsx -> CAMPANITA DE ALERTAS EN TIEMPO REAL (Conteo y Ventana Desplegable)
+│   │       └── NavbarWrapper.tsx    -> ENVOLTURA INTELIGENTE (Oculta el Navbar en la pantalla de Login)
+│   │
+│   ├── lib/                         -> HERRAMIENTAS INTERNAS, SEGURIDAD Y CONEXIONES
+│   │   ├── auth.ts                  -> CRIPTOGRAFÍA JWT: Funciones createSession, getSession y logout
+│   │   ├── mail.ts                  -> CORREO GMAIL: Configuración de Nodemailer y diseño HTML institucional
+│   │   └── prisma.ts                -> CONEXIÓN SINGLETON: Conecta y optimiza las consultas a PostgreSQL
+│   │
+│   └── middleware.ts                -> EL GUARDIÁN DEL SISTEMA: Protege rutas, valida cookies JWT y bloquea accesos no autorizados
+│
+└── GUIA_UBICACION_Y_ESTUDIO.txt      -> ESTE ARCHIVO DE REFERENCIA RÁPIDA
+
+================================================================================
+  RESPUESTAS INMEDIATAS PARA EL PROFESOR: ¿DÓNDE ESTÁ CADA COSA Y QUÉ HACE?
+================================================================================
+
+1. ¿DÓNDE SE DIVIDEN LAS COLUMNAS TURNO MAÑANA Y TURNO TARDE DEL TABLERO?
+   -> Archivo: `src/app/page.tsx`
+   -> Qué hace: Separa en dos arreglos las incidencias según el turno (`turnomanana` y `turnotarde`) y las renderiza en columnas visuales independientes.
+
+2. ¿CÓMO FUNCIONA EL SUBIDO DE FOTOS Y EL ENVÍO DEL FORMULARIO DE AVERÍAS?
+   -> Archivo: `src/app/reportar/page.tsx` (Función `handleSubmit`)
+   -> Qué hace: Empaqueta el texto y todas las fotos cargadas en un objeto binario `FormData` y las envía por POST a `/api/incidencias`.
+
+3. ¿DÓNDE SE GUARDAN LAS FOTOS EN DISCO, SE INSERTA EN BD, SUENA LA CAMPANA Y SE ENVÍA EL CORREO?
+   -> Archivo: `src/app/api/incidencias/route.ts` (Función `POST`)
+   -> Qué hace: Extrae los archivos binarios, los guarda en `/public/uploads/` con un nombre único, inserta en PostgreSQL (`prisma.incidencia.create`), crea el globo rojo en la campanita (`prisma.notificacion.create`) y ejecuta en segundo plano el envío de correo.
+
+4. ¿DÓNDE ESTÁ EL CRON DE AUTOLIMPIEZA DE 24 HORAS PARA TARJETAS RESUELTAS?
+   -> Archivo: `src/app/api/incidencias/route.ts` (Función `GET`)
+   -> Qué hace: Al listar las incidencias para el tablero, borra automáticamente (`prisma.incidencia.deleteMany`) aquellas cuya `fechaSolucion` sea de hace más de 24 horas (`Date.now() - 24h`).
+
+5. ¿DÓNDE ESTÁ EL DISEÑO HTML DEL CORREO INSTITUCIONAL Y LA CONEXIÓN A GMAIL?
+   -> Archivo: `src/lib/mail.ts`
+   -> Qué hace: Utiliza `nodemailer` conectado al servidor seguro `smtp.gmail.com:465` con la clave de aplicación encriptada en `.env`, armando una tarjeta HTML/CSS con el escudo del IESTP Suiza y un botón rojo de acceso directo al portal web.
+
+6. ¿CÓMO FUNCIONA EL CENTRO DE NOTIFICACIONES EN TIEMPO REAL (CAMPANITA 🔔)?
+   -> Archivo: `src/components/ui/NotificationBell.tsx`
+   -> Qué hace: Hace un polling automático cada 15 segundos hacia `/api/notificaciones` para verificar si hay alertas pendientes (`leido: false`) y dibuja el contador en rojo sobre el ícono.
+
+7. ¿DÓNDE ESTÁ LA SEGURIDAD QUE EVITA QUE UN ESTUDIANTE O HACKER ENTRE AL PANEL DE ADMIN?
+   -> Archivo: `src/middleware.ts`
+   -> Qué hace: Intercepta cada clic del usuario antes de cargar la página. Desencripta la cookie `session` usando `jwtVerify`; si no hay sesión lo redirige al `/login`, y si intenta entrar a `/admin` sin ser `ADMIN`, lo regresa al Tablero Principal.
+
+================================================================================
+   ¡TODO COMENTADO PEDAGÓGICAMENTE CON 1 O 2 LÍNEAS EN LOS PROPIOS ARCHIVOS!
+================================================================================
+Cada uno de los archivos clave mencionados arriba tiene ahora comentarios explicativos en español en las líneas exactas de cada función, para que si el profesor te pide abrir el código en pantalla, puedas leer y explicar instantáneamente lo que hace cada bloque sin memorización excesiva.

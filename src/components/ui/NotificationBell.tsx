@@ -14,6 +14,7 @@ export default function NotificationBell({ userRole }: NotificationBellProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  // 1. Efecto Polling: Cada 15 segundos consulta automáticamente si llegaron nuevas incidencias al servidor
   useEffect(() => {
     if (userRole !== "ADMIN") return;
 
@@ -23,6 +24,7 @@ export default function NotificationBell({ userRole }: NotificationBellProps) {
     return () => clearInterval(interval);
   }, [userRole]);
 
+  // 2. Cerrar la ventana emergente de alertas si el usuario hace clic afuera del menú
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -33,6 +35,7 @@ export default function NotificationBell({ userRole }: NotificationBellProps) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // 3. cargarNotificaciones: Consulta a la API /api/notificaciones el conteo de alertas no leídas
   const cargarNotificaciones = async () => {
     try {
       const res = await fetch("/api/notificaciones");
@@ -46,6 +49,7 @@ export default function NotificationBell({ userRole }: NotificationBellProps) {
     }
   };
 
+  // 4. marcarTodasComoLeidas: Envía una petición PUT al backend para apagar el contador de alertas rojas
   const marcarTodasComoLeidas = async () => {
     try {
       await fetch("/api/notificaciones", {

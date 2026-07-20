@@ -7,6 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// 1. Tabla Usuario: Almacena administradores, docentes y estudiantes con su DNI, rol y turno asignado
 model Usuario {
   id          Int          @id @default(autoincrement())
   dni         String       @unique
@@ -21,6 +22,7 @@ model Usuario {
   @@index([fecha])
 }
 
+// 2. Tabla Incidencia: Guarda los reportes técnicos, sus evidencias (fotos en servidor), aula y estado del semáforo
 model Incidencia {
   id            Int       @id @default(autoincrement())
   titulo        String    @db.VarChar(200)
@@ -40,6 +42,7 @@ model Incidencia {
   @@index([fecha])                       // Optimiza ordenamiento descendente en listados
 }
 
+// 3. Tabla Ubicacion: Laboratorios y ambientes dinámicos gestionables por el Administrador sin editar código
 model Ubicacion {
   id        Int      @id @default(autoincrement())
   nombre    String   @unique @db.VarChar(100)
@@ -50,6 +53,7 @@ model Ubicacion {
   @@index([activo, nombre])
 }
 
+// 4. Tabla Notificacion: Registro histórico de alertas en tiempo real para encender el globo rojo de la campanita en el Navbar
 model Notificacion {
   id           Int       @id @default(autoincrement())
   titulo       String    @db.VarChar(200)

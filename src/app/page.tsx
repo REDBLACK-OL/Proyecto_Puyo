@@ -11,6 +11,7 @@ export default function Home() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // 1. fetchIncidencias: Consulta en paralelo la lista de averías y el rol del usuario actual
   const fetchIncidencias = async () => {
     const [res, authRes] = await Promise.all([
       fetch("/api/incidencias"),
@@ -34,6 +35,7 @@ export default function Home() {
     fetchIncidencias();
   }, []);
 
+  // 2. marcarResuelto: Envía petición PATCH a la API para cambiar el estado de Pendiente a Solucionado
   const marcarResuelto = async (id: number) => {
     const res = await fetch(`/api/incidencias/${id}`, { method: "PATCH" });
     if (res.ok) {
@@ -48,6 +50,7 @@ export default function Home() {
     </div>
   );
 
+  // 3. Filtrado visual: Separa el arreglo de incidencias en dos columnas según el turno del estudiante
   const turnomanana = incidencias.filter(i => i.usuario?.turno === 'MANANA');
   const turnotarde = incidencias.filter(i => i.usuario?.turno === 'TARDE');
 
