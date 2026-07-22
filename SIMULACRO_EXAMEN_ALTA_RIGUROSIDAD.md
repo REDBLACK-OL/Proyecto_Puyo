@@ -1,7 +1,8 @@
 # 🏛️ MANUAL DE INGENIERÍA Y SIMULACRO DE ALTA RIGUROSIDAD (OBJETIVO: 18-20/20)
 ## PROYECTO PUYO — SISTEMA DE GESTIÓN DE INCIDENCIAS (SOP SUIZA)
 **Institución:** Instituto de Educación Superior Tecnológico Público Suiza (IESTP Suiza)  
-**Objetivo Académico:** Asegurar una nota $\ge 17$ en la sustentación final y prueba de modificación en caliente (*Live Coding*).
+**Objetivo Académico:** Asegurar una nota $\ge 17$ en la sustentación final y prueba de modificación en caliente (*Live Coding*).  
+🔗 **Enlace Directo a Guía de Ubicación Visual:** [Ver Guía Definitiva de Interfaces y Coordenadas Quirúrgicas](file:///C:/Users/Geric/Desktop/WorkSpace/Proyecto_Puyo/GUIA_DEFINITIVA_INTERFACES_Y_UBICACION.md) | [Ver Mapa Rápido por Rol](file:///C:/Users/Geric/Desktop/WorkSpace/Proyecto_Puyo/MAPA_VISUAL_INTERFACES_POR_ROL.md)
 
 ---
 

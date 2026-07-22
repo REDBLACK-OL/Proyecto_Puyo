@@ -20,7 +20,7 @@ export default async function Navbar() {
           </div>
           <div>
             <h1 className="text-xl font-extrabold tracking-tight text-white flex items-center gap-2">
-              IESTP Suiza <Building2 size={18} className="text-red-500" />
+              IESTP Suiza 2026<Building2 size={18} className="text-red-500" />
             </h1>
             <p className="text-xs text-blue-200 font-bold tracking-widest uppercase mt-0.5">Portal de Incidencias</p>
           </div>

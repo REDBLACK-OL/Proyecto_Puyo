@@ -64,7 +64,7 @@ export default function Home() {
           Supervisa el estado de aulas y laboratorios ordenados por turno.
         </p>
       </div>
-
+     
       {incidencias.length === 0 ? (
         <div className="text-center premium-card p-16 rounded-3xl border-t-4 border-t-blue-800">
           <div className="bg-blue-50 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">

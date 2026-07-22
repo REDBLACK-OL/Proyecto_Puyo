@@ -1,6 +1,7 @@
 # 🗺️ MAPA EXACTO DE INTERFACES POR ROL (COORDENADAS VISUALES)
 ## PROYECTO PUYO — SISTEMA DE GESTIÓN DE INCIDENCIAS (SOP SUIZA)
-> **GUÍA RÁPIDA DE UBICACIÓN:** Si el profesor te pide *"Agrégale tal cosa a la pantalla que ve el Administrador"* o *"Cambia algo en el tablero que ven los estudiantes"*, este documento te dice **exactamente a qué archivo de `src/app/` o `src/components/` debes entrar y en qué línea hacerlo**.
+> **GUÍA RÁPIDA DE UBICACIÓN:** Si el profesor te pide *"Agrégale tal cosa a la pantalla que ve el Administrador"* o *"Cambia algo en el tablero que ven los estudiantes"*, este documento te dice **exactamente a qué archivo de `src/app/` o `src/components/` debes entrar y en qué línea hacerlo**.  
+🔗 **Enlace Directo a Guía Detallada y Coordenadas Quirúrgicas:** [Ver Guía Definitiva de Interfaces y Coordenadas Quirúrgicas](file:///C:/Users/Geric/Desktop/WorkSpace/Proyecto_Puyo/GUIA_DEFINITIVA_INTERFACES_Y_UBICACION.md) | [Ver Simulacro de Alta Rigurosidad](file:///C:/Users/Geric/Desktop/WorkSpace/Proyecto_Puyo/SIMULACRO_EXAMEN_ALTA_RIGUROSIDAD.md)
 
 ---
 
